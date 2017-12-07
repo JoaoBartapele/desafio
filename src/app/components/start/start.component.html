@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-6">
+    <div class="text-center">
+      <label for="jogador1">Jogador 1</label>
+    </div>
+    <div class="col-8 mx-auto">
+      <input
+        id="jogador1"
+        type="text"
+        class="form-control"
+        #j1
+      />
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="text-center">
+      <label for="jogador2">Jogador 2</label>
+    </div>
+    <div class="col-8 mx-auto">
+      <input
+        id="jogador2"
+        type="text"
+        class="form-control"
+        #j2
+      />
+    </div>
+  </div>
+</div>
+<br />
+<div class="row">
+  <div class="col-6 mx-auto">
+    <button
+      type="button"
+      class="btn btn-primary form-control"
+      [routerLink]="['/game', {j1: j1.value, j2: j2.value}]"
+    >
+      Iniciar
+    </button>
+  </div>
+</div>

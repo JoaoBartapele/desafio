@@ -1,38 +1,46 @@
-<p>
-  game works!
-</p>
 <div class="jumbotron container">
   <div class="row">
-    <div class="col-6">
+    <div class="col-6" *ngFor="let j of players">
       <div class="text-center">
         <h2>
-          {{j1.name}}
+          {{j.name}}
         </h2>
       </div>
       <div class="text-center">
-        <h3>
-          {{j1.life + '%'}}
-        </h3>
-        <button class="btn btn-dark">Atacar</button>
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="text-center">
-        <h2>
-          {{j1.name}}
-        </h2>
-      </div>
-      <div class="text-center">
-        <h3>
-          {{j1.life + '%'}}
-        </h3>
+        <span class="display-4">
+          Vida: {{j.life + '%'}}
+        </span>
+        <div class="progress">
+          <div
+            class="progress-bar progress-bar-striped progress-bar-animated"
+            role="progressbar"
+            [style.width]="j.life + '%'"
+            [class.bg-danger]="j.life < 50"
+            [class.bg-success]="j.life >= 50"
+          >
+          </div>
+        </div>
+        <br />
         <div>
-          <button class="btn btn-dark">Atacar</button>
+          <button
+            class="btn btn-dark"
+            (key.press)="j"
+            (click)="damage(j)"
+            [disabled]="checkLife()"
+          >
+            Atacar
+          </button>
         </div>
       </div>
     </div>
   </div>
   <div class="text-center">
-    <button class="btn btn-sucess">Reiniciar</button>
+    <button
+      class="btn btn-sucess"
+      (click)="resetGame()"
+    >
+      Reiniciar
+    </button>
   </div>
 </div>
+<router-outlet></router-outlet>
