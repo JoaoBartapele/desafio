@@ -1,3 +1,6 @@
 body {
     padding: 5%;
+    background-image: url('./assets/img/bg-tank.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%
 }

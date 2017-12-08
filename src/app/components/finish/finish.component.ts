@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Params } from '@angular/router/src/shared';
+import { Location } from '@angular/common';
+import { Player } from '../../models/player';
 
 @Component({
   selector: 'app-finish',
@@ -9,14 +11,18 @@ import { Params } from '@angular/router/src/shared';
 })
 export class FinishComponent implements OnInit {
 
-  private vencedor: any;
-  
+  private vencedor: Player | Params;
+
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) { }
 
   ngOnInit() {
     this.vencedor = this.route.snapshot.params;
+  }
+  private resetGame(): void {
+    this.location.back();
   }
 
 }

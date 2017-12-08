@@ -1,3 +1,19 @@
+Comandos para execução:
+
+#Instalar dependências:
+<code>npm install</code>
+
+#Ambiente desenvolvimento:
+<code>ng serve -o</code>
+
+#Testes unitários:
+<code>ng test</code>
+
+#Testes fim a fim:
+<code>ng e2e</code>
+
+-- Desenvolvido por João Marcos Bartapele.
+
 # TESTE FRONTEND S2IT
 
 Você deve implementar um jogo, onde o jogador que ficar com 0% de vida perde.

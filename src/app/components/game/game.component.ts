@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Player } from '../../models/player';
 
 @Component({
   selector: 'app-game',
@@ -11,42 +12,37 @@ import { Router } from '@angular/router';
 })
 export class GameComponent implements OnInit {
 
-  private j1 = {
-    name: 'Jogador 1',
-    life: 100
-  };
-  private j2 = {
-    name: 'Jogador 2',
-    life: 100
-  };
-  private players: any[];
+  public p1: Player = new Player();
+  public p2: Player = new Player();
+  private players: Player[];
 
   constructor(
     private cdr: ChangeDetectorRef,
-    private route: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.players = [this.j1,this.j2];
+    this.route.queryParams.subscribe((param)=>{
+      this.p1.name = param['jogador1'];
+      this.p2.name = param['jogador2'];
+    });
+    this.players = [this.p1,this.p2];
   }
 
-  private damage(j: any): void {
+  private attack(j: Player): void {
     this.players.indexOf(j) === 0? this.players[1].life -= 20: this.players[0].life -= 20;
-    if(this.j1.life === 0) this.route.navigate(['game/resultado', this.j2]);
-    else if(this.j2.life === 0) this.route.navigate(['game/resultado', this.j1]);
-  }
-
-  private checkLife(): boolean {
-    return this.players.find((p) => p.life === 0 ? true : false);
+    if(this.p1.life === 0) this.router.navigate(['game/resultado', this.p2]);
+    else if(this.p2.life === 0) this.router.navigate(['game/resultado', this.p1]);
   }
 
   private resetGame(): void {
-     this.players.forEach((p) => p.life = 100);
-  }
+    this.players.forEach((p) => p.life = 100);
+ }
 
   public keyEvent(e: KeyboardEvent): void {
-    if(e.code === 'NumpadEnter') this.damage(this.j2);
-    else if(e.code === 'KeyS') this.damage(this.j1);
+    if(e.code === 'KeyL') this.attack(this.p2);
+    else if(e.code === 'KeyS') this.attack(this.p1);
     this.cdr.detectChanges();
   }
 }

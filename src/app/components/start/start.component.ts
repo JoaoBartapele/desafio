@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-start',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StartComponent implements OnInit {
 
-  constructor() { }
+  public nomesForm: FormGroup;
+
+  constructor(
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit() {
+    this.nomesForm = this.fb.group({
+      jogador1: new FormControl('', Validators.required),
+      jogador2: new FormControl('', Validators.required)
+    })
   }
 
 }

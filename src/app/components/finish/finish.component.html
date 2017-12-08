@@ -1,12 +1,17 @@
+<div class="my-2">
+  <app-buttons
+    (emitComand)="resetGame()"
+  ></app-buttons>
+</div>
 <div class="container">
-  <div class="text-center">
-    <span class="display-4">
+  <div class="text-center" id="titulo">
+    <span class="h1">
       FIM DE JOGO!
     </span>
   </div>
-  <div class="text-center">
-    <span>
-      {{vencedor.name}} foi o vencedor com {{vencedor.life + '%'}} de vida restante!
+  <div class="text-center" id="mensagem">
+    <span class="mensagem">
+      Jogador "{{vencedor.name | uppercase}}" foi o vencedor com {{vencedor.life + '%'}} de vida restante!
     </span>
   </div>
 </div>

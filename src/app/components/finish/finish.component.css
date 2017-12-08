@@ -1,0 +1,14 @@
+div.container {
+    background-color: rgba(82, 81, 81, 0.7);
+    background-position: center;
+    background-size: 100%;
+    font-weight: bolder;
+    color: white;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+.h1 {
+    font-size: xx-large
+}
+.mensagem {
+    font-size: x-large
+}
