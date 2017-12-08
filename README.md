@@ -1,3 +1,5 @@
+O jogo pode ser acessado por esse link https://projeto01-d5f45.firebaseapp.com/. Hosteado pelo Google FireBase.
+
 Comandos para execução:
 
 #Instalar dependências:
